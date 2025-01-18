@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
+    "@unhead/vue": "^1.11.18",
     "firebase": "^10.14.1",
     "firebaseui": "^6.1.0",
     "firebaseui-ja": "^1.0.0",
