@@ -97,7 +97,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import { useField, useForm } from 'vee-validate'
 import axios from 'axios';
 import router from '../../../plugins/router';
@@ -143,17 +142,8 @@ const { handleSubmit, handleReset } = useForm({
   const last_name = useField('last_name')
   const last_name_kana = useField('last_name_kana')
   const joined_at = useField('joined_at')
-  const retired_at = useField('retired_at')
   const email = useField('email')
-  const select = useField('select')
-  const checkbox = useField('checkbox')
-
-  const items = ref([
-    'Item 1',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-  ])
+  
 
   const submit = handleSubmit(values => {
     // console.log(JSON.stringify(values, null, 2))
@@ -164,7 +154,7 @@ const { handleSubmit, handleReset } = useForm({
     axios.post( // 工事データを参照
       '/employees', 
       values, 
-    ).then(res => {
+    ).then(() => {
       alert('登録しました.');
       router.back(); // 一つ前の画面に戻る
     }).catch((error) => {
