@@ -18,6 +18,13 @@ const routes = [
     },
   },
   { 
+    path: '/calendar/new', 
+    component: () => import("../components/page/calendar/new.vue"),
+    meta: {
+      requiresAuth: true, // ログイン必須
+    },
+  },
+  { 
     path: "/signin", 
     component: () => import("../components/page/user/SignIn.vue"),
     meta: {
