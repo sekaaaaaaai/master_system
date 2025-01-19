@@ -3,7 +3,14 @@ class EmployeesController < ApplicationController
 
   # GET /employees
   def index
-    @employees = Employee.all
+    if params[:q].present?
+      query = params[:q].downcase
+      @employees = Employee.all.select do |employee|
+        employee.full_name.downcase.include?(query)
+      end
+    else
+      @employees = Employee.all
+    end
 
     render json: @employees
   end
