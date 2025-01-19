@@ -6,7 +6,7 @@ class EmployeesController < ApplicationController
     if params[:q].present?
       query = params[:q].downcase
       @employees = Employee.all.select do |employee|
-        employee.full_name.downcase.include?(query)
+        employee.full_name.downcase.include?(query) || employee.id.include?(query) || employee.email.include?(query)
       end
     else
       @employees = Employee.all
@@ -53,6 +53,6 @@ class EmployeesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def employee_params
-      params.require(:employee).permit(:first_name, :middle_name, :last_name, :first_name_kana, :middle_name_kana, :last_name_kana, :email, :joined_at, :retired_at)
+      params.require(:employee).permit(:id, :first_name, :middle_name, :last_name, :first_name_kana, :middle_name_kana, :last_name_kana, :email, :joined_at, :retired_at)
     end
 end
