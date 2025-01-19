@@ -160,7 +160,7 @@ const { handleSubmit, handleReset } = useForm({
     postEmployee(values);
   })
 
-  const postEmployee = (values) => {
+  const postEmployee = (values: any) => {
     axios.post( // 工事データを参照
       '/employees', 
       values, 
