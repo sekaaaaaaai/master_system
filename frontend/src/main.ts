@@ -5,6 +5,7 @@ import vuetify from './plugins/vuetify'
 import router from './plugins/router'
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore'
+import { createHead } from '@unhead/vue'
 
 const firebaseConfig = {
   apiKey: "AIzaSyAahRfTTmOlY5GxK7doNkzLDF-e-EwLhvQ",
@@ -21,6 +22,8 @@ const db = getFirestore(firebaseApp);
 const app = createApp(App)
 app.use(router) // router追加
 app.use(vuetify) // vuetify追加
+const head = createHead()
+app.use(head)
 app.mount('#app')
 
 export { db };
