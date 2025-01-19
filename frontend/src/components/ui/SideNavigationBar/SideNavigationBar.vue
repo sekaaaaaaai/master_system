@@ -13,6 +13,7 @@
       v-for="(menu, i) in menus"
       :key="i"
       :value="menu"
+      @click="menu.action"
       link>
       <template v-slot:prepend>
         <v-icon :color="menu.color" :icon="menu.icon"></v-icon>
@@ -34,9 +35,9 @@ import router from '../../../plugins/router';
 const menus = [
   {
     color: 'blue-darken-2',
-    icon: 'mdi-calendar',
-    title: 'カレンダー',
-    action: () => { router.push('/'); }, // ルートに遷移
+    icon: 'mdi-account-group',
+    title: '社員マスタ',
+    action: () => { router.push('/calendar'); }, // ルートに遷移
   },
   {
     color: 'green-darken-2',
@@ -117,19 +118,19 @@ onMounted(() => {
     }
 
     // 社員情報の取得
-    if(currentUser.value != null) {
-      const uid = currentUser.value.uid;
-      const docRef = doc(db, "users", uid);
-      const docSnap = await getDoc(docRef);
+    // if(currentUser.value != null) {
+    //   const uid = currentUser.value.uid;
+    //   const docRef = doc(db, "users", uid);
+    //   const docSnap = await getDoc(docRef);
 
-      if (docSnap.exists()) {
-        syainData.value = docSnap.data();
-        console.log("Document data:", docSnap.data());
-      } else {
-        // docSnap.data() will be undefined in this case
-        console.log("No such document!");
-      }
-    }
+    //   if (docSnap.exists()) {
+    //     syainData.value = docSnap.data();
+    //     console.log("Document data:", docSnap.data());
+    //   } else {
+    //     // docSnap.data() will be undefined in this case
+    //     console.log("No such document!");
+    //   }
+    // }
   })
 });
 </script>

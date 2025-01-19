@@ -113,19 +113,19 @@ onMounted(() => {
     }
 
     // 社員情報の取得
-    if(currentUser.value != null) {
-      const uid = currentUser.value.uid;
-      const docRef = doc(db, "users", uid);
-      const docSnap = await getDoc(docRef);
+    // if(currentUser.value != null) {
+    //   const uid = currentUser.value.uid;
+    //   const docRef = doc(db, "users", uid);
+    //   const docSnap = await getDoc(docRef);
 
-      if (docSnap.exists()) {
-        syainData.value = docSnap.data();
-        console.log("Document data:", docSnap.data());
-      } else {
-        // docSnap.data() will be undefined in this case
-        console.log("No such document!");
-      }
-    }
+    //   if (docSnap.exists()) {
+    //     syainData.value = docSnap.data();
+    //     console.log("Document data:", docSnap.data());
+    //   } else {
+    //     // docSnap.data() will be undefined in this case
+    //     console.log("No such document!");
+    //   }
+    // }
   })
 });
 </script>
